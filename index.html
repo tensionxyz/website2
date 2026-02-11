@@ -268,14 +268,27 @@
             position: absolute;
             top: 5rem;
             right: 3rem;
-            width: clamp(60px, 6vw, 90px);
-            height: clamp(60px, 6vw, 90px);
+            width: clamp(80px, 10vw, 150px);
             z-index: 4;
         }
 
-        .emblem svg {
+        .emblem img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            opacity: 0.85;
+            transition: opacity 0.3s;
+        }
+
+        .emblem img:hover {
+            opacity: 1;
+        }
+
+        /* ─── FOOTER LOGO ─── */
+        .footer-logo {
+            width: 30px;
+            height: auto;
+            opacity: 0.3;
+            filter: invert(1);
         }
 
         /* ─── SECTIONS ─── */
@@ -648,8 +661,7 @@
             .hero-line-3 { font-size: 3rem; }
 
             .emblem {
-                width: 50px;
-                height: 50px;
+                width: 60px;
             }
         }
     </style>
@@ -679,19 +691,11 @@
 
         <!-- Editorial background text -->
         <span class="editorial-bg-text editorial-bg-1">MHC</span>
-        <span class="editorial-bg-text editorial-bg-2">2025</span>
+        <span class="editorial-bg-text editorial-bg-2">2026</span>
 
         <!-- Emblem -->
         <div class="emblem">
-            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="48" stroke="#2A3F6F" stroke-width="1.5"/>
-                <circle cx="50" cy="50" r="38" stroke="#2A3F6F" stroke-width="0.75"/>
-                <path d="M50 15 L53 42 L50 38 L47 42 Z" fill="#2A3F6F" opacity="0.8"/>
-                <path d="M50 85 L47 58 L50 62 L53 58 Z" fill="#2A3F6F" opacity="0.8"/>
-                <path d="M15 50 L42 47 L38 50 L42 53 Z" fill="#2A3F6F" opacity="0.8"/>
-                <path d="M85 50 L58 53 L62 50 L58 47 Z" fill="#2A3F6F" opacity="0.8"/>
-                <text x="50" y="53" text-anchor="middle" font-family="'Playfair Display', serif" font-size="11" font-weight="600" fill="#2A3F6F">MHC</text>
-            </svg>
+            <img src="logo.png" alt="Modern Heritage Capital">
         </div>
 
         <!-- Main typography -->
@@ -854,12 +858,13 @@
         <p class="contact-text">
             Modern Heritage Capital is a private investment firm. For partnership or investment inquiries, reach us directly.
         </p>
-        <a href="mailto:info@modernheritagecapital.com" class="contact-email">info@modernheritagecapital.com</a>
+        <a href="mailto:info@modernheritage.capital" class="contact-email">info@modernheritage.capital</a>
     </section>
 
     <!-- FOOTER -->
     <footer>
-        <span>&copy; 2025 Modern Heritage Capital. All rights reserved.</span>
+        <span>&copy; 2026 Modern Heritage Capital. All rights reserved.</span>
+        <img src="logo.png" alt="MHC" class="footer-logo">
         <span>New York</span>
     </footer>
 
