@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Heritage Capital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FAFAFA;
+            --black: #0A0A0A;
+            --gray: #6B6B6B;
+            --light-gray: #E0E0E0;
+            --accent: #2A3F6F;
+            --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--black);
+            font-family: var(--sans);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* ─── NAV ─── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        nav .logo {
+            font-family: var(--sans);
+            font-weight: 600;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: white;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav .nav-links a {
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            opacity: 0.5;
+        }
+
+        /* ─── HERO ─── */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 6rem 2rem 4rem;
+            overflow: hidden;
+        }
+
+        .hero-typography {
+            position: relative;
+            text-align: center;
+            z-index: 2;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .hero-line {
+            font-family: var(--serif);
+            font-weight: 400;
+            line-height: 0.85;
+            letter-spacing: -0.03em;
+            color: var(--black);
+        }
+
+        .hero-line-1 {
+            font-size: clamp(4rem, 12vw, 14rem);
+            margin-left: -2%;
+        }
+
+        .hero-line-2 {
+            font-size: clamp(4rem, 13vw, 15.5rem);
+            font-style: italic;
+            margin-top: -0.05em;
+        }
+
+        .hero-line-3 {
+            font-size: clamp(3.5rem, 10vw, 12rem);
+            margin-top: -0.05em;
+            margin-right: -2%;
+        }
+
+        .hero-subtitle {
+            margin-top: 3rem;
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        /* ─── GLASS OBJECTS ─── */
+        .glass-object {
+            position: absolute;
+            border-radius: 12px;
+            backdrop-filter: blur(0px);
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .glass-cube-1 {
+            width: clamp(80px, 12vw, 180px);
+            height: clamp(80px, 12vw, 180px);
+            top: 20%;
+            right: 8%;
+            background: linear-gradient(
+                135deg,
+                rgba(200, 220, 255, 0.25) 0%,
+                rgba(180, 200, 240, 0.1) 30%,
+                rgba(255, 255, 255, 0.4) 50%,
+                rgba(200, 210, 240, 0.15) 70%,
+                rgba(220, 230, 255, 0.2) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow:
+                0 8px 32px rgba(42, 63, 111, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.5),
+                inset 0 -1px 0 rgba(42, 63, 111, 0.05);
+            transform: rotate(15deg) perspective(500px) rotateY(-10deg);
+            animation: float1 8s ease-in-out infinite;
+        }
+
+        .glass-cube-2 {
+            width: clamp(60px, 8vw, 120px);
+            height: clamp(60px, 8vw, 120px);
+            bottom: 25%;
+            left: 6%;
+            background: linear-gradient(
+                225deg,
+                rgba(220, 230, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.5) 40%,
+                rgba(190, 210, 250, 0.15) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow:
+                0 8px 32px rgba(42, 63, 111, 0.06),
+                inset 0 2px 4px rgba(255, 255, 255, 0.6);
+            transform: rotate(-20deg) perspective(500px) rotateX(10deg);
+            border-radius: 50%;
+            animation: float2 10s ease-in-out infinite;
+        }
+
+        .glass-cube-3 {
+            width: clamp(50px, 7vw, 100px);
+            height: clamp(50px, 7vw, 100px);
+            top: 15%;
+            left: 15%;
+            background: linear-gradient(
+                45deg,
+                rgba(200, 215, 255, 0.2) 0%,
+                rgba(255, 255, 255, 0.45) 50%,
+                rgba(210, 220, 250, 0.15) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow:
+                0 4px 24px rgba(42, 63, 111, 0.06),
+                inset 0 1px 2px rgba(255, 255, 255, 0.5);
+            transform: rotate(35deg) perspective(400px) rotateY(15deg) rotateX(-5deg);
+            animation: float3 12s ease-in-out infinite;
+        }
+
+        .glass-cube-4 {
+            width: clamp(40px, 5vw, 70px);
+            height: clamp(40px, 5vw, 70px);
+            bottom: 18%;
+            right: 15%;
+            background: linear-gradient(
+                180deg,
+                rgba(215, 225, 255, 0.25) 0%,
+                rgba(255, 255, 255, 0.5) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow:
+                0 6px 20px rgba(42, 63, 111, 0.05),
+                inset 0 1px 3px rgba(255, 255, 255, 0.4);
+            transform: rotate(-10deg) perspective(300px) rotateX(-10deg) rotateY(5deg);
+            border-radius: 8px;
+            animation: float1 9s ease-in-out infinite reverse;
+        }
+
+        .glass-cube-5 {
+            width: clamp(30px, 4vw, 55px);
+            height: clamp(30px, 4vw, 55px);
+            top: 40%;
+            right: 20%;
+            background: linear-gradient(
+                315deg,
+                rgba(195, 210, 250, 0.2) 0%,
+                rgba(255, 255, 255, 0.35) 100%
+            );
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 16px rgba(42, 63, 111, 0.04);
+            border-radius: 50%;
+            transform: rotate(25deg);
+            animation: float2 7s ease-in-out infinite reverse;
+        }
+
+        @keyframes float1 {
+            0%, 100% { transform: rotate(15deg) perspective(500px) rotateY(-10deg) translateY(0); }
+            50% { transform: rotate(15deg) perspective(500px) rotateY(-10deg) translateY(-20px); }
+        }
+
+        @keyframes float2 {
+            0%, 100% { transform: rotate(-20deg) perspective(500px) rotateX(10deg) translateY(0); }
+            50% { transform: rotate(-20deg) perspective(500px) rotateX(10deg) translateY(-15px); }
+        }
+
+        @keyframes float3 {
+            0%, 100% { transform: rotate(35deg) perspective(400px) rotateY(15deg) rotateX(-5deg) translateY(0); }
+            50% { transform: rotate(35deg) perspective(400px) rotateY(15deg) rotateX(-5deg) translateY(-25px); }
+        }
+
+        /* ─── CREST / EMBLEM ─── */
+        .emblem {
+            position: absolute;
+            top: 5rem;
+            right: 3rem;
+            width: clamp(60px, 6vw, 90px);
+            height: clamp(60px, 6vw, 90px);
+            z-index: 4;
+        }
+
+        .emblem svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* ─── SECTIONS ─── */
+        section {
+            padding: 8rem 3rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        section.wide {
+            max-width: 1200px;
+        }
+
+        .section-label {
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.65rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 3rem;
+        }
+
+        .section-heading {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 2.5rem;
+            color: var(--black);
+        }
+
+        .section-heading em {
+            font-style: italic;
+        }
+
+        .section-body {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .section-body:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ─── DIVIDER ─── */
+        .divider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+
+        .divider hr {
+            border: none;
+            height: 1px;
+            background: var(--light-gray);
+        }
+
+        /* ─── PRINCIPLES ─── */
+        .principle {
+            margin-bottom: 3.5rem;
+        }
+
+        .principle:last-child {
+            margin-bottom: 0;
+        }
+
+        .principle-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.25rem;
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .principle-text {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--gray);
+        }
+
+        /* ─── RESEARCH GRID ─── */
+        .research-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .research-item {
+            padding: 0;
+        }
+
+        .research-item-number {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: 3rem;
+            color: var(--light-gray);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .research-item-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .research-item-text {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: var(--gray);
+        }
+
+        /* ─── FOCUS AREAS ─── */
+        .focus-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .focus-item {
+            border-top: 1px solid var(--black);
+            padding-top: 1.5rem;
+        }
+
+        .focus-item-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .focus-item-text {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        /* ─── BUILD SECTION ─── */
+        .build-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .build-item {
+            position: relative;
+            padding: 2.5rem;
+            background: linear-gradient(
+                135deg,
+                rgba(200, 220, 255, 0.08) 0%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            border: 1px solid rgba(42, 63, 111, 0.08);
+            border-radius: 4px;
+        }
+
+        .build-item-title {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 1.15rem;
+            margin-bottom: 1rem;
+            color: var(--black);
+        }
+
+        .build-item-text {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--gray);
+        }
+
+        /* ─── CLOSING STATEMENT ─── */
+        .closing {
+            text-align: center;
+            padding: 10rem 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .closing-text {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* ─── CONTACT SECTION ─── */
+        .contact-section {
+            text-align: center;
+            padding: 8rem 3rem;
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .contact-section .section-label {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .contact-heading {
+            font-family: var(--serif);
+            font-weight: 400;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .contact-heading em {
+            font-style: italic;
+        }
+
+        .contact-text {
+            font-family: var(--sans);
+            font-weight: 300;
+            font-size: 1rem;
+            line-height: 1.85;
+            color: rgba(255, 255, 255, 0.5);
+            max-width: 500px;
+            margin: 0 auto 3rem;
+        }
+
+        .contact-email {
+            display: inline-block;
+            font-family: var(--sans);
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white);
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 1rem 2.5rem;
+            transition: all 0.3s;
+        }
+
+        .contact-email:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            background: var(--black);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer span {
+            font-family: var(--sans);
+            font-weight: 400;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* ─── EDITORIAL OVERLAPPING TEXT DECORATIONS ─── */
+        .editorial-bg-text {
+            position: absolute;
+            font-family: var(--serif);
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.025);
+            pointer-events: none;
+            white-space: nowrap;
+            z-index: 0;
+        }
+
+        .editorial-bg-1 {
+            font-size: clamp(6rem, 18vw, 22rem);
+            top: 50%;
+            left: -5%;
+            transform: translateY(-50%) rotate(-90deg);
+            transform-origin: left center;
+        }
+
+        .editorial-bg-2 {
+            font-size: clamp(4rem, 10vw, 12rem);
+            bottom: 5%;
+            right: -2%;
+        }
+
+        /* ─── SCROLL REVEAL ─── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 1.25rem 1.5rem;
+            }
+
+            nav .nav-links {
+                gap: 1.5rem;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .focus-grid,
+            .build-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .divider {
+                padding: 0 1.5rem;
+            }
+
+            .hero {
+                padding: 8rem 1rem 4rem;
+            }
+
+            .emblem {
+                top: 5rem;
+                right: 1.5rem;
+            }
+
+            .glass-cube-1 { right: 3%; top: 12%; }
+            .glass-cube-3 { left: 5%; top: 10%; }
+            .glass-cube-5 { display: none; }
+        }
+
+        @media (max-width: 600px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            .hero-line-1 { font-size: 3.5rem; }
+            .hero-line-2 { font-size: 4rem; }
+            .hero-line-3 { font-size: 3rem; }
+
+            .emblem {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="logo">MHC</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#philosophy">Philosophy</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#focus">Focus</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <!-- Glass objects -->
+        <div class="glass-object glass-cube-1"></div>
+        <div class="glass-object glass-cube-2"></div>
+        <div class="glass-object glass-cube-3"></div>
+        <div class="glass-object glass-cube-4"></div>
+        <div class="glass-object glass-cube-5"></div>
+
+        <!-- Editorial background text -->
+        <span class="editorial-bg-text editorial-bg-1">MHC</span>
+        <span class="editorial-bg-text editorial-bg-2">2025</span>
+
+        <!-- Emblem -->
+        <div class="emblem">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" stroke="#2A3F6F" stroke-width="1.5"/>
+                <circle cx="50" cy="50" r="38" stroke="#2A3F6F" stroke-width="0.75"/>
+                <path d="M50 15 L53 42 L50 38 L47 42 Z" fill="#2A3F6F" opacity="0.8"/>
+                <path d="M50 85 L47 58 L50 62 L53 58 Z" fill="#2A3F6F" opacity="0.8"/>
+                <path d="M15 50 L42 47 L38 50 L42 53 Z" fill="#2A3F6F" opacity="0.8"/>
+                <path d="M85 50 L58 53 L62 50 L58 47 Z" fill="#2A3F6F" opacity="0.8"/>
+                <text x="50" y="53" text-anchor="middle" font-family="'Playfair Display', serif" font-size="11" font-weight="600" fill="#2A3F6F">MHC</text>
+            </svg>
+        </div>
+
+        <!-- Main typography -->
+        <div class="hero-typography">
+            <div class="hero-line hero-line-1">Modern</div>
+            <div class="hero-line hero-line-2">Heritage</div>
+            <div class="hero-line hero-line-3">Capital</div>
+        </div>
+
+        <p class="hero-subtitle">Digital Asset Investment &mdash; Fundamental Research &mdash; Long Conviction</p>
+    </section>
+
+    <!-- ABOUT -->
+    <div class="divider"><hr></div>
+    <section id="about" class="reveal">
+        <p class="section-label">About</p>
+        <h2 class="section-heading">Deep research. <em>Structural conviction.</em></h2>
+        <p class="section-body">
+            Modern Heritage Capital is a digital asset investment firm built on deep fundamental research, on-chain intelligence, and long-conviction positioning. We invest in protocols and digital assets where our proprietary research identifies structural mispricings &mdash; then we hold with conviction through volatility.
+        </p>
+        <p class="section-body">
+            We believe the most durable edge in digital assets comes not from speed, but from depth. Our research infrastructure maps the full lifecycle of a protocol &mdash; its supply dynamics, governance evolution, ecosystem growth, and the behavior of its most consequential stakeholders &mdash; to develop investment theses that compound over quarters and years, not days.
+        </p>
+    </section>
+
+    <!-- INVESTMENT PHILOSOPHY -->
+    <div class="divider"><hr></div>
+    <section id="philosophy" class="reveal">
+        <p class="section-label">Investment Philosophy</p>
+        <h2 class="section-heading">Three principles. <em>One process.</em></h2>
+
+        <div class="principle">
+            <h3 class="principle-title">Understand supply before price.</h3>
+            <p class="principle-text">
+                Most market participants focus on demand narratives &mdash; adoption curves, user growth, partnership announcements. We start with supply. Who holds the tokens? What are their incentives? When can they sell? What structural forces &mdash; vesting schedules, staking lockups, exchange reserve dynamics &mdash; constrain or release supply into the market? Price is where supply meets demand. If you understand supply deeply, you see opportunities others miss.
+            </p>
+        </div>
+
+        <div class="principle">
+            <h3 class="principle-title">Conviction requires infrastructure.</h3>
+            <p class="principle-text">
+                Opinions are cheap. Conviction &mdash; the kind that lets you size meaningfully and hold through drawdowns &mdash; requires a research process that generates repeatable, verifiable insights. We've built proprietary systems for on-chain entity attribution, governance monitoring, supply modeling, and ecosystem intelligence that let us move from "this seems interesting" to "we know exactly why this is mispriced and when the market will recognize it."
+            </p>
+        </div>
+
+        <div class="principle">
+            <h3 class="principle-title">Asymmetry over frequency.</h3>
+            <p class="principle-text">
+                We don't need to be right often. We need to be right when it matters &mdash; when the payoff is asymmetric, the thesis is well-supported, and our positioning gives us time to let the investment work. We concentrate capital in our highest-conviction opportunities and manage risk through depth of understanding, not diversification for its own sake.
+            </p>
+        </div>
+    </section>
+
+    <!-- RESEARCH METHODOLOGY -->
+    <div class="divider"><hr></div>
+    <section id="research" class="wide reveal">
+        <p class="section-label">Research Methodology</p>
+        <h2 class="section-heading">Comprehensive understanding <em>before</em> capital is deployed.</h2>
+
+        <div class="research-grid">
+            <div class="research-item">
+                <div class="research-item-number">01</div>
+                <h3 class="research-item-title">Fundamental Analysis</h3>
+                <p class="research-item-text">
+                    We start with the basics done rigorously: What problem does this protocol solve? Who are the competitors? Who invested and what is their track record? What are the growth metrics &mdash; network activity, developer engagement, revenue, and user retention? We evaluate these through the lens of long-term viability, not short-term momentum.
+                </p>
+            </div>
+
+            <div class="research-item">
+                <div class="research-item-number">02</div>
+                <h3 class="research-item-title">Supply Dynamics</h3>
+                <p class="research-item-text">
+                    This is where our process diverges from most investors. We build detailed supply models for every asset we cover: total supply, circulating supply, staked and locked supply, floating supply, emission schedules, vesting cliffs, and concentration analysis across the largest holders. We layer probabilistic assessments &mdash; accounting for lock-up durations, staking exit penalties, and historical holder behavior &mdash; to estimate true liquid supply.
+                </p>
+            </div>
+
+            <div class="research-item">
+                <div class="research-item-number">03</div>
+                <h3 class="research-item-title">On-Chain Intelligence</h3>
+                <p class="research-item-text">
+                    We maintain a proprietary database mapping blockchain addresses to known entities &mdash; foundations, early investors, ecosystem funds, market participants, and protocol treasuries. This attribution layer transforms raw blockchain data into actionable intelligence. When a significant holder changes their behavior, we see it &mdash; and we understand the context behind it.
+                </p>
+            </div>
+
+            <div class="research-item">
+                <div class="research-item-number">04</div>
+                <h3 class="research-item-title">Governance & Ecosystem Monitoring</h3>
+                <p class="research-item-text">
+                    Protocol governance increasingly drives tokenomics: staking parameters, burn mechanisms, treasury deployments, supply policy changes. We monitor governance forums and on-chain proposals across our coverage universe, tracking how protocol evolution affects the investment thesis. Governance is where long-term value creation and destruction happens &mdash; most investors ignore it until it's too late.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AREAS OF FOCUS -->
+    <div class="divider"><hr></div>
+    <section id="focus" class="wide reveal">
+        <p class="section-label">Areas of Focus</p>
+        <h2 class="section-heading">Where we <em>deploy capital.</em></h2>
+
+        <div class="focus-grid">
+            <div class="focus-item">
+                <h3 class="focus-item-title">Layer 1 Protocols</h3>
+                <p class="focus-item-text">
+                    Foundational infrastructure where supply dynamics, staking economics, and ecosystem growth create the most analyzable investment opportunities. Our deepest coverage includes Ethereum, Solana, Bitcoin, Sui, and Aptos.
+                </p>
+            </div>
+
+            <div class="focus-item">
+                <h3 class="focus-item-title">Ecosystem Catalysts</h3>
+                <p class="focus-item-text">
+                    Protocol upgrades, regulatory milestones, and structural market shifts that create asymmetric entry points. We map catalyst timelines months in advance and build positions before consensus recognizes the opportunity.
+                </p>
+            </div>
+
+            <div class="focus-item">
+                <h3 class="focus-item-title">Supply-Driven Dislocations</h3>
+                <p class="focus-item-text">
+                    Moments when structural supply events &mdash; vesting unlocks, exchange reserve shifts, governance-driven tokenomics changes &mdash; create temporary mispricings that our research infrastructure identifies early.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE BUILD -->
+    <div class="divider"><hr></div>
+    <section class="wide reveal">
+        <p class="section-label">What We Build</p>
+        <h2 class="section-heading">Infrastructure that <em>sustains our edge.</em></h2>
+        <p class="section-body">Beyond capital deployment, we invest in the research infrastructure that compounds over time. Every investment outcome feeds back into our process, refining our models and expanding our coverage.</p>
+
+        <div class="build-grid">
+            <div class="build-item">
+                <h3 class="build-item-title">Entity Attribution</h3>
+                <p class="build-item-text">
+                    A proprietary cross-chain database mapping blockchain addresses to known participants. This is the foundation that makes all other on-chain analysis meaningful.
+                </p>
+            </div>
+
+            <div class="build-item">
+                <h3 class="build-item-title">Supply Modeling</h3>
+                <p class="build-item-text">
+                    Quantitative frameworks for estimating true liquid supply and forecasting supply-side pressure, going beyond publicly available circulating supply figures.
+                </p>
+            </div>
+
+            <div class="build-item">
+                <h3 class="build-item-title">Ecosystem Intelligence</h3>
+                <p class="build-item-text">
+                    Integrated monitoring across governance forums, development activity, social channels, and official communications &mdash; synthesized into a unified research view per asset.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact-section">
+        <p class="section-label">Contact</p>
+        <h2 class="contact-heading">Let's <em>talk.</em></h2>
+        <p class="contact-text">
+            Modern Heritage Capital is a private investment firm. For partnership or investment inquiries, reach us directly.
+        </p>
+        <a href="mailto:info@modernheritagecapital.com" class="contact-email">info@modernheritagecapital.com</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span>&copy; 2025 Modern Heritage Capital. All rights reserved.</span>
+        <span>New York</span>
+    </footer>
+
+    <!-- SCROLL REVEAL JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            reveals.forEach(el => observer.observe(el));
+
+            // Parallax for glass objects
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrollY = window.scrollY;
+                        const cubes = document.querySelectorAll('.glass-object');
+                        cubes.forEach((cube, i) => {
+                            const speed = 0.02 + (i * 0.015);
+                            cube.style.transform = cube.style.transform || '';
+                            cube.style.marginTop = `${scrollY * speed}px`;
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
